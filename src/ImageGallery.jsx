@@ -9,9 +9,7 @@ import {
   arrayOf,
   bool,
   func,
-  node,
   number,
-  oneOf,
   shape,
   string,
 } from 'prop-types';
@@ -43,6 +41,7 @@ export default class ImageGallery extends React.Component {
       bulletClass: string,
       bulletOnClick: func,
       description: string,
+      credit: string,
       original: string.isRequired,
       fullscreen: string,
       originalAlt: string,
@@ -75,7 +74,7 @@ export default class ImageGallery extends React.Component {
     preventDefaultTouchmoveEvent: bool,
     onErrorImageURL: string,
     indexSeparator: string,
-    thumbnailPosition: oneOf(['top', 'bottom', 'left', 'right']),
+    thumbnailPosition: string,
     startIndex: number,
     slideDuration: number,
     slideInterval: number,
@@ -624,7 +623,6 @@ export default class ImageGallery extends React.Component {
 
       const slide = (
         <div
-          aria-label={`Go to Slide ${index + 1}`}
           key={`slide-${item.original}-${index}`}
           tabIndex="-1"
           className={`image-gallery-slide ${alignment} ${originalClass}`}
@@ -1309,6 +1307,13 @@ export default class ImageGallery extends React.Component {
           item.description && (
             <span className="image-gallery-description">
               {item.description}
+            </span>
+          )
+        }
+                {
+          item.credit && (
+            <span className="image-gallery-credit">
+              <p>Photo: </p>{item.credit}
             </span>
           )
         }
