@@ -212,18 +212,40 @@ $ig-transparent: rgba(0, 0, 0, 0) !default;
   }
 
   .image-gallery-description {
-    background: $ig-background-black;
+    background: transparent;
     bottom: 70px;
-    color: $ig-white;
+    color: $ig-black;
     left: 0;
     line-height: 1;
     padding: 10px 20px;
+    display: block;
     position: absolute;
     white-space: normal;
 
     @media (max-width: $ig-small-screen) {
       bottom: 45px;
       font-size: .8em;
+      padding: 8px 15px;
+    }
+
+  }
+}
+
+  .image-gallery-credit {
+    display: block;
+    background: transparent;
+    bottom: 70px;
+    color: $ig-black;
+    left: 0;
+    line-height: 1;
+    padding: 8px 14px;
+    position: absolute;
+    white-space: normal;
+    font-size: .5rem;
+
+    @media (max-width: $ig-small-screen) {
+      bottom: 45px;
+      font-size: .3em;
       padding: 8px 15px;
     }
 
