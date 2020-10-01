@@ -1267,7 +1267,7 @@ export default class ImageGallery extends React.Component {
 
     return (
       <div>
-        {!imageExists ? (
+        {!item.imageExists ? (
           <p>loading...</p>
         ) :
         {
