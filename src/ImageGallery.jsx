@@ -1267,6 +1267,9 @@ export default class ImageGallery extends React.Component {
 
     return (
       <div>
+        {!imageExists ? (
+          <p>loading...</p>
+        ) :
         {
           item.imageSet ? (
             <picture
@@ -1301,6 +1304,7 @@ export default class ImageGallery extends React.Component {
               onError={handleImageError}
             />
           )
+        }
         }
 
         {
