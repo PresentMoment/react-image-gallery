@@ -1309,7 +1309,6 @@ export default class ImageGallery extends React.Component {
     const { onImageLoad } = this.props;
     const imageExists = this.loadedImages[item.original];
     if (!imageExists && onImageLoad) {
-      console.log("loaded");
       this.loadedImages[item.original] = true; // prevent from call again
       // image just loaded, call onImageLoad
       onImageLoad(event);

@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -8,35 +8,35 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _clsx = require('clsx');
+var _clsx = require("clsx");
 
 var _clsx2 = _interopRequireDefault(_clsx);
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactSwipeable = require('react-swipeable');
+var _reactSwipeable = require("react-swipeable");
 
-var _lodash = require('lodash.throttle');
+var _lodash = require("lodash.throttle");
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _lodash3 = require('lodash.debounce');
+var _lodash3 = require("lodash.debounce");
 
 var _lodash4 = _interopRequireDefault(_lodash3);
 
-var _lodash5 = require('lodash.isequal');
+var _lodash5 = require("lodash.isequal");
 
 var _lodash6 = _interopRequireDefault(_lodash5);
 
-var _resizeObserverPolyfill = require('resize-observer-polyfill');
+var _resizeObserverPolyfill = require("resize-observer-polyfill");
 
 var _resizeObserverPolyfill2 = _interopRequireDefault(_resizeObserverPolyfill);
 
-var _propTypes = require('prop-types');
+var _propTypes = require("prop-types");
 
-var _SVG = require('./SVG');
+var _SVG = require("./SVG");
 
 var _SVG2 = _interopRequireDefault(_SVG);
 
@@ -48,7 +48,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var screenChangeEvents = ['fullscreenchange', 'MSFullscreenChange', 'mozfullscreenchange', 'webkitfullscreenchange'];
+var screenChangeEvents = ["fullscreenchange", "MSFullscreenChange", "mozfullscreenchange", "webkitfullscreenchange"];
 
 var imageSetType = (0, _propTypes.arrayOf)((0, _propTypes.shape)({
   srcSet: _propTypes.string,
@@ -113,20 +113,20 @@ var ImageGallery = function (_React$Component) {
   }
 
   _createClass(ImageGallery, [{
-    key: 'componentDidMount',
+    key: "componentDidMount",
     value: function componentDidMount() {
       var autoPlay = this.props.autoPlay;
 
       if (autoPlay) {
         this.play();
       }
-      window.addEventListener('keydown', this.handleKeyDown);
-      window.addEventListener('mousedown', this.handleMouseDown);
+      window.addEventListener("keydown", this.handleKeyDown);
+      window.addEventListener("mousedown", this.handleMouseDown);
       this.initResizeObserver(this.imageGallerySlideWrapper);
       this.addScreenChangeEvent();
     }
   }, {
-    key: 'componentDidUpdate',
+    key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps, prevState) {
       var _props = this.props,
           items = _props.items,
@@ -170,10 +170,10 @@ var ImageGallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'componentWillUnmount',
+    key: "componentWillUnmount",
     value: function componentWillUnmount() {
-      window.removeEventListener('keydown', this.handleKeyDown);
-      window.removeEventListener('mousedown', this.handleMouseDown);
+      window.removeEventListener("keydown", this.handleKeyDown);
+      window.removeEventListener("mousedown", this.handleMouseDown);
       this.removeScreenChangeEvent();
       this.removeResizeObserver();
       if (this.playPauseIntervalId) {
@@ -185,7 +185,7 @@ var ImageGallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'onSliding',
+    key: "onSliding",
     value: function onSliding() {
       var _this2 = this;
 
@@ -206,7 +206,7 @@ var ImageGallery = function (_React$Component) {
       }, slideDuration + 50);
     }
   }, {
-    key: 'onThumbnailClick',
+    key: "onThumbnailClick",
     value: function onThumbnailClick(event, index) {
       var onThumbnailClick = this.props.onThumbnailClick;
 
@@ -216,7 +216,7 @@ var ImageGallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'onThumbnailMouseOver',
+    key: "onThumbnailMouseOver",
     value: function onThumbnailMouseOver(event, index) {
       var _this3 = this;
 
@@ -230,7 +230,7 @@ var ImageGallery = function (_React$Component) {
       }, 300);
     }
   }, {
-    key: 'onThumbnailMouseLeave',
+    key: "onThumbnailMouseLeave",
     value: function onThumbnailMouseLeave() {
       if (this.thumbnailMouseOverTimer) {
         var autoPlay = this.props.autoPlay;
@@ -243,7 +243,7 @@ var ImageGallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'setScrollDirection',
+    key: "setScrollDirection",
     value: function setScrollDirection(dir) {
       var _state2 = this.state,
           scrollingUpDown = _state2.scrollingUpDown,
@@ -259,12 +259,12 @@ var ImageGallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'setThumbsTranslate',
+    key: "setThumbsTranslate",
     value: function setThumbsTranslate(thumbsTranslate) {
       this.setState({ thumbsTranslate: thumbsTranslate });
     }
   }, {
-    key: 'setModalFullscreen',
+    key: "setModalFullscreen",
     value: function setModalFullscreen(state) {
       var onScreenChange = this.props.onScreenChange;
 
@@ -275,7 +275,7 @@ var ImageGallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'getThumbsTranslate',
+    key: "getThumbsTranslate",
     value: function getThumbsTranslate(indexDifference) {
       var _props3 = this.props,
           disableThumbnailScroll = _props3.disableThumbnailScroll,
@@ -309,7 +309,7 @@ var ImageGallery = function (_React$Component) {
       return 0;
     }
   }, {
-    key: 'getAlignmentClassName',
+    key: "getAlignmentClassName",
     value: function getAlignmentClassName(index) {
       // Necessary for lazing loading
       var currentIndex = this.state.currentIndex;
@@ -317,20 +317,20 @@ var ImageGallery = function (_React$Component) {
           infinite = _props4.infinite,
           items = _props4.items;
 
-      var alignment = '';
-      var leftClassName = 'left';
-      var centerClassName = 'center';
-      var rightClassName = 'right';
+      var alignment = "";
+      var leftClassName = "left";
+      var centerClassName = "center";
+      var rightClassName = "right";
 
       switch (index) {
         case currentIndex - 1:
-          alignment = ' ' + leftClassName;
+          alignment = " " + leftClassName;
           break;
         case currentIndex:
-          alignment = ' ' + centerClassName;
+          alignment = " " + centerClassName;
           break;
         case currentIndex + 1:
-          alignment = ' ' + rightClassName;
+          alignment = " " + rightClassName;
           break;
         default:
           break;
@@ -339,17 +339,17 @@ var ImageGallery = function (_React$Component) {
       if (items.length >= 3 && infinite) {
         if (index === 0 && currentIndex === items.length - 1) {
           // set first slide as right slide if were sliding right from last slide
-          alignment = ' ' + rightClassName;
+          alignment = " " + rightClassName;
         } else if (index === items.length - 1 && currentIndex === 0) {
           // set last slide as left slide if were sliding left from first slide
-          alignment = ' ' + leftClassName;
+          alignment = " " + leftClassName;
         }
       }
 
       return alignment;
     }
   }, {
-    key: 'getTranslateXForTwoSlide',
+    key: "getTranslateXForTwoSlide",
     value: function getTranslateXForTwoSlide(index) {
       // For taking care of infinite swipe when there are only two slides
       var _state4 = this.state,
@@ -369,9 +369,9 @@ var ImageGallery = function (_React$Component) {
       // keep track of user swiping direction
       // important to understand how to translateX based on last direction
       if (currentSlideOffset > 0) {
-        this.direction = 'left';
+        this.direction = "left";
       } else if (currentSlideOffset < 0) {
-        this.direction = 'right';
+        this.direction = "right";
       }
 
       // when swiping between two slides make sure the next and prev slides
@@ -387,17 +387,17 @@ var ImageGallery = function (_React$Component) {
 
       if (indexChanged) {
         // when indexChanged move the slide to the correct side
-        if (firstSlideWasPrevSlide && swipingEnded && this.direction === 'left') {
+        if (firstSlideWasPrevSlide && swipingEnded && this.direction === "left") {
           translateX = 100;
-        } else if (secondSlideWasPrevSlide && swipingEnded && this.direction === 'right') {
+        } else if (secondSlideWasPrevSlide && swipingEnded && this.direction === "right") {
           translateX = -100;
         }
       } else {
         // keep the slide on the correct side if the swipe was not successful
-        if (secondSlideIsNextSlide && swipingEnded && this.direction === 'left') {
+        if (secondSlideIsNextSlide && swipingEnded && this.direction === "left") {
           translateX = -100;
         }
-        if (firstSlideIsNextSlide && swipingEnded && this.direction === 'right') {
+        if (firstSlideIsNextSlide && swipingEnded && this.direction === "right") {
           translateX = 100;
         }
       }
@@ -405,7 +405,7 @@ var ImageGallery = function (_React$Component) {
       return translateX;
     }
   }, {
-    key: 'getThumbnailBarHeight',
+    key: "getThumbnailBarHeight",
     value: function getThumbnailBarHeight() {
       if (this.isThumbnailVertical()) {
         var gallerySlideWrapperHeight = this.state.gallerySlideWrapperHeight;
@@ -415,7 +415,7 @@ var ImageGallery = function (_React$Component) {
       return {};
     }
   }, {
-    key: 'getSlideStyle',
+    key: "getSlideStyle",
     value: function getSlideStyle(index) {
       var _state5 = this.state,
           currentIndex = _state5.currentIndex,
@@ -451,10 +451,10 @@ var ImageGallery = function (_React$Component) {
         translateX = this.getTranslateXForTwoSlide(index);
       }
 
-      var translate = 'translate(' + translateX + '%, 0)';
+      var translate = "translate(" + translateX + "%, 0)";
 
       if (useTranslate3D) {
-        translate = 'translate3d(' + translateX + '%, 0, 0)';
+        translate = "translate3d(" + translateX + "%, 0, 0)";
       }
 
       return _extends({}, {
@@ -466,14 +466,14 @@ var ImageGallery = function (_React$Component) {
       }, slideStyle);
     }
   }, {
-    key: 'getCurrentIndex',
+    key: "getCurrentIndex",
     value: function getCurrentIndex() {
       var currentIndex = this.state.currentIndex;
 
       return currentIndex;
     }
   }, {
-    key: 'getThumbnailStyle',
+    key: "getThumbnailStyle",
     value: function getThumbnailStyle() {
       var translate = void 0;
       var _props6 = this.props,
@@ -484,14 +484,14 @@ var ImageGallery = function (_React$Component) {
       var verticalTranslateValue = isRTL ? thumbsTranslate * -1 : thumbsTranslate;
 
       if (this.isThumbnailVertical()) {
-        translate = 'translate(0, ' + thumbsTranslate + 'px)';
+        translate = "translate(0, " + thumbsTranslate + "px)";
         if (useTranslate3D) {
-          translate = 'translate3d(0, ' + thumbsTranslate + 'px, 0)';
+          translate = "translate3d(0, " + thumbsTranslate + "px, 0)";
         }
       } else {
-        translate = 'translate(' + verticalTranslateValue + 'px, 0)';
+        translate = "translate(" + verticalTranslateValue + "px, 0)";
         if (useTranslate3D) {
-          translate = 'translate3d(' + verticalTranslateValue + 'px, 0, 0)';
+          translate = "translate3d(" + verticalTranslateValue + "px, 0, 0)";
         }
       }
       return {
@@ -503,7 +503,7 @@ var ImageGallery = function (_React$Component) {
       };
     }
   }, {
-    key: 'getSlideItems',
+    key: "getSlideItems",
     value: function getSlideItems() {
       var _this4 = this;
 
@@ -531,8 +531,8 @@ var ImageGallery = function (_React$Component) {
 
       items.forEach(function (item, index) {
         var alignment = _this4.getAlignmentClassName(index);
-        var originalClass = item.originalClass ? ' ' + item.originalClass : '';
-        var thumbnailClass = item.thumbnailClass ? ' ' + item.thumbnailClass : '';
+        var originalClass = item.originalClass ? " " + item.originalClass : "";
+        var thumbnailClass = item.thumbnailClass ? " " + item.thumbnailClass : "";
         var handleRenderItem = item.renderItem || renderItem || _this4.renderItem;
         var handleRenderThumbInner = item.renderThumbInner || renderThumbInner || _this4.renderThumbInner;
 
@@ -544,11 +544,11 @@ var ImageGallery = function (_React$Component) {
         var slideStyle = _this4.getSlideStyle(index);
 
         var slide = _react2.default.createElement(
-          'div',
+          "div",
           {
-            key: 'slide-' + item.original + '-' + index,
-            tabIndex: '-1',
-            className: 'image-gallery-slide ' + alignment + ' ' + originalClass,
+            key: "slide-" + item.original + "-" + index,
+            tabIndex: "-1",
+            className: "image-gallery-slide " + alignment + " " + originalClass,
             style: slideStyle,
             onClick: onClick,
             onKeyUp: _this4.handleSlideKeyUp,
@@ -558,9 +558,9 @@ var ImageGallery = function (_React$Component) {
             onMouseOver: onMouseOver,
             onFocus: onMouseOver,
             onMouseLeave: onMouseLeave,
-            role: 'button'
+            role: "button"
           },
-          showItem ? handleRenderItem(item) : _react2.default.createElement('div', { style: { height: '100%' } })
+          showItem ? handleRenderItem(item) : _react2.default.createElement("div", { style: { height: "100%" } })
         );
 
         if (infinite) {
@@ -573,15 +573,15 @@ var ImageGallery = function (_React$Component) {
         }
 
         if (showThumbnails) {
-          var igThumbnailClass = (0, _clsx2.default)('image-gallery-thumbnail', thumbnailClass, { active: currentIndex === index });
+          var igThumbnailClass = (0, _clsx2.default)("image-gallery-thumbnail", thumbnailClass, { active: currentIndex === index });
           thumbnails.push(_react2.default.createElement(
-            'button',
+            "button",
             {
-              key: 'thumbnail-' + item.original + '-' + index,
-              type: 'button',
-              tabIndex: '0',
-              'aria-pressed': currentIndex === index ? 'true' : 'false',
-              'aria-label': 'Go to Slide ' + (index + 1),
+              key: "thumbnail-" + item.original + "-" + index,
+              type: "button",
+              tabIndex: "0",
+              "aria-pressed": currentIndex === index ? "true" : "false",
+              "aria-label": "Go to Slide " + (index + 1),
               className: igThumbnailClass,
               onMouseLeave: slideOnThumbnailOver ? _this4.onThumbnailMouseLeave : null,
               onMouseOver: function onMouseOver(event) {
@@ -609,14 +609,16 @@ var ImageGallery = function (_React$Component) {
             }
             return _this4.slideToIndex.call(_this4, index, event);
           };
-          var igBulletClass = (0, _clsx2.default)('image-gallery-bullet', item.bulletClass, { active: currentIndex === index });
-          bullets.push(_react2.default.createElement('button', {
-            type: 'button',
-            key: 'bullet-' + item.original + '-' + index,
+          var igBulletClass = (0, _clsx2.default)("image-gallery-bullet", item.bulletClass, {
+            active: currentIndex === index
+          });
+          bullets.push(_react2.default.createElement("button", {
+            type: "button",
+            key: "bullet-" + item.original + "-" + index,
             className: igBulletClass,
             onClick: bulletOnClick,
-            'aria-pressed': currentIndex === index ? 'true' : 'false',
-            'aria-label': 'Go to Slide ' + (index + 1)
+            "aria-pressed": currentIndex === index ? "true" : "false",
+            "aria-label": "Go to Slide " + (index + 1)
           }));
         }
       });
@@ -628,7 +630,7 @@ var ImageGallery = function (_React$Component) {
       };
     }
   }, {
-    key: 'ignoreIsTransitioning',
+    key: "ignoreIsTransitioning",
     value: function ignoreIsTransitioning() {
       /*
         Ignore isTransitioning because were not going to sibling slides
@@ -648,7 +650,7 @@ var ImageGallery = function (_React$Component) {
       return slidingMoreThanOneSlideLeftOrRight && notGoingFromFirstToLast && notGoingFromLastToFirst;
     }
   }, {
-    key: 'isFirstOrLastSlide',
+    key: "isFirstOrLastSlide",
     value: function isFirstOrLastSlide(index) {
       var items = this.props.items;
 
@@ -658,7 +660,7 @@ var ImageGallery = function (_React$Component) {
       return isLastSlide || isFirstSlide;
     }
   }, {
-    key: 'slideIsTransitioning',
+    key: "slideIsTransitioning",
     value: function slideIsTransitioning(index) {
       /*
       returns true if the gallery is transitioning and the index is not the
@@ -673,7 +675,7 @@ var ImageGallery = function (_React$Component) {
       return isTransitioning && indexIsNotPreviousOrNextSlide;
     }
   }, {
-    key: 'shouldPushSlideOnInfiniteMode',
+    key: "shouldPushSlideOnInfiniteMode",
     value: function shouldPushSlideOnInfiniteMode(index) {
       /*
         Push (show) slide if slide is the current slide and the next slide
@@ -689,7 +691,7 @@ var ImageGallery = function (_React$Component) {
       return !this.slideIsTransitioning(index) || this.ignoreIsTransitioning() && !this.isFirstOrLastSlide(index);
     }
   }, {
-    key: 'slideThumbnailBar',
+    key: "slideThumbnailBar",
     value: function slideThumbnailBar(previousIndex) {
       var _state8 = this.state,
           thumbsTranslate = _state8.thumbsTranslate,
@@ -710,14 +712,14 @@ var ImageGallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'canSlide',
+    key: "canSlide",
     value: function canSlide() {
       var items = this.props.items;
 
       return items.length >= 2;
     }
   }, {
-    key: 'canSlideLeft',
+    key: "canSlideLeft",
     value: function canSlideLeft() {
       var _props8 = this.props,
           infinite = _props8.infinite,
@@ -726,7 +728,7 @@ var ImageGallery = function (_React$Component) {
       return infinite || (isRTL ? this.canSlideNext() : this.canSlidePrevious());
     }
   }, {
-    key: 'canSlideRight',
+    key: "canSlideRight",
     value: function canSlideRight() {
       var _props9 = this.props,
           infinite = _props9.infinite,
@@ -735,14 +737,14 @@ var ImageGallery = function (_React$Component) {
       return infinite || (isRTL ? this.canSlidePrevious() : this.canSlideNext());
     }
   }, {
-    key: 'canSlidePrevious',
+    key: "canSlidePrevious",
     value: function canSlidePrevious() {
       var currentIndex = this.state.currentIndex;
 
       return currentIndex > 0;
     }
   }, {
-    key: 'canSlideNext',
+    key: "canSlideNext",
     value: function canSlideNext() {
       var currentIndex = this.state.currentIndex;
       var items = this.props.items;
@@ -750,7 +752,7 @@ var ImageGallery = function (_React$Component) {
       return currentIndex < items.length - 1;
     }
   }, {
-    key: 'handleSwiping',
+    key: "handleSwiping",
     value: function handleSwiping(_ref) {
       var event = _ref.event,
           absX = _ref.absX,
@@ -783,7 +785,7 @@ var ImageGallery = function (_React$Component) {
         }
 
         var swipingTransition = {
-          transition: 'transform ' + swipingTransitionDuration + 'ms ease-out'
+          transition: "transform " + swipingTransitionDuration + "ms ease-out"
         };
 
         this.setState({
@@ -796,7 +798,7 @@ var ImageGallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'sufficientSwipe',
+    key: "sufficientSwipe",
     value: function sufficientSwipe() {
       var currentSlideOffset = this.state.currentSlideOffset;
       var swipeThreshold = this.props.swipeThreshold;
@@ -804,7 +806,7 @@ var ImageGallery = function (_React$Component) {
       return Math.abs(currentSlideOffset) > swipeThreshold;
     }
   }, {
-    key: 'handleOnSwiped',
+    key: "handleOnSwiped",
     value: function handleOnSwiped(_ref2) {
       var event = _ref2.event,
           dir = _ref2.dir,
@@ -842,7 +844,7 @@ var ImageGallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'handleOnSwipedTo',
+    key: "handleOnSwipedTo",
     value: function handleOnSwipedTo(swipeDirection, isFlick) {
       var _state11 = this.state,
           currentIndex = _state11.currentIndex,
@@ -863,13 +865,13 @@ var ImageGallery = function (_React$Component) {
       this.unthrottledSlideToIndex(slideTo);
     }
   }, {
-    key: 'handleMouseDown',
+    key: "handleMouseDown",
     value: function handleMouseDown() {
       // keep track of mouse vs keyboard usage for a11y
-      this.imageGallery.current.classList.add('image-gallery-using-mouse');
+      this.imageGallery.current.classList.add("image-gallery-using-mouse");
     }
   }, {
-    key: 'handleKeyDown',
+    key: "handleKeyDown",
     value: function handleKeyDown(event) {
       var _props12 = this.props,
           disableKeyDown = _props12.disableKeyDown,
@@ -877,7 +879,7 @@ var ImageGallery = function (_React$Component) {
       var isFullscreen = this.state.isFullscreen;
       // keep track of mouse vs keyboard usage for a11y
 
-      this.imageGallery.current.classList.remove('image-gallery-using-mouse');
+      this.imageGallery.current.classList.remove("image-gallery-using-mouse");
 
       if (disableKeyDown) return;
       var LEFT_ARROW = 37;
@@ -906,7 +908,7 @@ var ImageGallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'handleImageError',
+    key: "handleImageError",
     value: function handleImageError(event) {
       var onErrorImageURL = this.props.onErrorImageURL;
 
@@ -917,14 +919,14 @@ var ImageGallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'removeResizeObserver',
+    key: "removeResizeObserver",
     value: function removeResizeObserver() {
       if (this.resizeObserver && this.imageGallerySlideWrapper && this.imageGallerySlideWrapper.current) {
         this.resizeObserver.unobserve(this.imageGallerySlideWrapper.current);
       }
     }
   }, {
-    key: 'handleResize',
+    key: "handleResize",
     value: function handleResize() {
       var currentIndex = this.state.currentIndex;
 
@@ -940,9 +942,13 @@ var ImageGallery = function (_React$Component) {
 
       if (this.thumbnailsWrapper && this.thumbnailsWrapper.current) {
         if (this.isThumbnailVertical()) {
-          this.setState({ thumbnailsWrapperHeight: this.thumbnailsWrapper.current.offsetHeight });
+          this.setState({
+            thumbnailsWrapperHeight: this.thumbnailsWrapper.current.offsetHeight
+          });
         } else {
-          this.setState({ thumbnailsWrapperWidth: this.thumbnailsWrapper.current.offsetWidth });
+          this.setState({
+            thumbnailsWrapperWidth: this.thumbnailsWrapper.current.offsetWidth
+          });
         }
       }
 
@@ -950,7 +956,7 @@ var ImageGallery = function (_React$Component) {
       this.setThumbsTranslate(-this.getThumbsTranslate(currentIndex));
     }
   }, {
-    key: 'initResizeObserver',
+    key: "initResizeObserver",
     value: function initResizeObserver(element) {
       var _this5 = this;
 
@@ -963,7 +969,7 @@ var ImageGallery = function (_React$Component) {
       this.resizeObserver.observe(element.current);
     }
   }, {
-    key: 'toggleFullScreen',
+    key: "toggleFullScreen",
     value: function toggleFullScreen() {
       var isFullscreen = this.state.isFullscreen;
 
@@ -974,7 +980,7 @@ var ImageGallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'togglePlay',
+    key: "togglePlay",
     value: function togglePlay() {
       if (this.playPauseIntervalId) {
         this.pause();
@@ -983,7 +989,7 @@ var ImageGallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'handleScreenChange',
+    key: "handleScreenChange",
     value: function handleScreenChange() {
       /*
         handles screen change events that the browser triggers e.g. esc key
@@ -1000,7 +1006,7 @@ var ImageGallery = function (_React$Component) {
       if (useBrowserFullscreen) this.setState({ isFullscreen: isFullscreen });
     }
   }, {
-    key: 'slideToIndex',
+    key: "slideToIndex",
     value: function slideToIndex(index, event) {
       var _state12 = this.state,
           currentIndex = _state12.currentIndex,
@@ -1037,12 +1043,12 @@ var ImageGallery = function (_React$Component) {
           currentIndex: nextIndex,
           isTransitioning: nextIndex !== currentIndex,
           currentSlideOffset: 0,
-          slideStyle: { transition: 'all ' + slideDuration + 'ms ease-out' }
+          slideStyle: { transition: "all " + slideDuration + "ms ease-out" }
         }, this.onSliding);
       }
     }
   }, {
-    key: 'slideLeft',
+    key: "slideLeft",
     value: function slideLeft(event) {
       var isRTL = this.props.isRTL;
 
@@ -1053,7 +1059,7 @@ var ImageGallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'slideRight',
+    key: "slideRight",
     value: function slideRight(event) {
       var isRTL = this.props.isRTL;
 
@@ -1064,7 +1070,7 @@ var ImageGallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'slidePrevious',
+    key: "slidePrevious",
     value: function slidePrevious(event) {
       var _this6 = this;
 
@@ -1085,7 +1091,7 @@ var ImageGallery = function (_React$Component) {
         */
         this.setState({
           currentSlideOffset: currentSlideOffset + 0.001, // this will reset once index changes
-          slideStyle: { transition: 'none' } // move the slide over instantly
+          slideStyle: { transition: "none" } // move the slide over instantly
         }, function () {
           // add 25ms timeout to avoid delay in moving slides over
           window.setTimeout(function () {
@@ -1097,7 +1103,7 @@ var ImageGallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'slideNext',
+    key: "slideNext",
     value: function slideNext(event) {
       var _this7 = this;
 
@@ -1115,7 +1121,7 @@ var ImageGallery = function (_React$Component) {
         // same as above for 2 slides
         this.setState({
           currentSlideOffset: currentSlideOffset - 0.001,
-          slideStyle: { transition: 'none' }
+          slideStyle: { transition: "none" }
         }, function () {
           window.setTimeout(function () {
             return _this7.slideToIndex(nextIndex, event);
@@ -1126,20 +1132,20 @@ var ImageGallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'handleThumbnailMouseOver',
+    key: "handleThumbnailMouseOver",
     value: function handleThumbnailMouseOver(event, index) {
       var slideOnThumbnailOver = this.props.slideOnThumbnailOver;
 
       if (slideOnThumbnailOver) this.onThumbnailMouseOver(event, index);
     }
   }, {
-    key: 'handleThumbnailKeyUp',
+    key: "handleThumbnailKeyUp",
     value: function handleThumbnailKeyUp(event, index) {
       // a11y support ^_^
       if (isEnterOrSpaceKey(event)) this.onThumbnailClick(event, index);
     }
   }, {
-    key: 'handleSlideKeyUp',
+    key: "handleSlideKeyUp",
     value: function handleSlideKeyUp(event) {
       // a11y support ^_^
       if (isEnterOrSpaceKey(event)) {
@@ -1149,14 +1155,14 @@ var ImageGallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'isThumbnailVertical',
+    key: "isThumbnailVertical",
     value: function isThumbnailVertical() {
       var thumbnailPosition = this.props.thumbnailPosition;
 
-      return thumbnailPosition === 'left' || thumbnailPosition === 'right';
+      return thumbnailPosition === "left" || thumbnailPosition === "right";
     }
   }, {
-    key: 'addScreenChangeEvent',
+    key: "addScreenChangeEvent",
     value: function addScreenChangeEvent() {
       var _this8 = this;
 
@@ -1165,7 +1171,7 @@ var ImageGallery = function (_React$Component) {
       });
     }
   }, {
-    key: 'removeScreenChangeEvent',
+    key: "removeScreenChangeEvent",
     value: function removeScreenChangeEvent() {
       var _this9 = this;
 
@@ -1174,7 +1180,7 @@ var ImageGallery = function (_React$Component) {
       });
     }
   }, {
-    key: 'fullScreen',
+    key: "fullScreen",
     value: function fullScreen() {
       var useBrowserFullscreen = this.props.useBrowserFullscreen;
 
@@ -1198,7 +1204,7 @@ var ImageGallery = function (_React$Component) {
       this.setState({ isFullscreen: true });
     }
   }, {
-    key: 'exitFullScreen',
+    key: "exitFullScreen",
     value: function exitFullScreen() {
       var isFullscreen = this.state.isFullscreen;
       var useBrowserFullscreen = this.props.useBrowserFullscreen;
@@ -1224,7 +1230,7 @@ var ImageGallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'pauseOrPlay',
+    key: "pauseOrPlay",
     value: function pauseOrPlay() {
       var infinite = this.props.infinite;
       var currentIndex = this.state.currentIndex;
@@ -1236,7 +1242,7 @@ var ImageGallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'play',
+    key: "play",
     value: function play() {
       var shouldCallOnPlay = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
       var _props15 = this.props,
@@ -1254,7 +1260,7 @@ var ImageGallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'pause',
+    key: "pause",
     value: function pause() {
       var shouldCallOnPause = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
       var onPause = this.props.onPause;
@@ -1270,7 +1276,7 @@ var ImageGallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'isImageLoaded',
+    key: "isImageLoaded",
     value: function isImageLoaded(item) {
       /*
         Keep track of images loaded so that onImageLoad prop is not
@@ -1285,7 +1291,7 @@ var ImageGallery = function (_React$Component) {
       return false;
     }
   }, {
-    key: 'handleImageLoaded',
+    key: "handleImageLoaded",
     value: function handleImageLoaded(event, item) {
       var onImageLoad = this.props.onImageLoad;
 
@@ -1297,7 +1303,7 @@ var ImageGallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'renderItem',
+    key: "renderItem",
     value: function renderItem(item) {
       var _this10 = this;
 
@@ -1306,12 +1312,11 @@ var ImageGallery = function (_React$Component) {
 
       var handleImageError = onImageError || this.handleImageError;
       var itemSrc = isFullscreen ? item.fullscreen || item.original : item.original;
-
       return _react2.default.createElement(
-        'div',
+        "div",
         null,
         item.imageSet ? _react2.default.createElement(
-          'picture',
+          "picture",
           {
             onLoad: function onLoad(event) {
               return _this10.handleImageLoaded(event, item);
@@ -1319,20 +1324,20 @@ var ImageGallery = function (_React$Component) {
             onError: handleImageError
           },
           item.imageSet.map(function (source, index) {
-            return _react2.default.createElement('source', {
-              key: 'media-' + source.srcSet + '-' + index,
+            return _react2.default.createElement("source", {
+              key: "media-" + source.srcSet + "-" + index,
               media: source.media,
               srcSet: source.srcSet,
               type: source.type
             });
           }),
-          _react2.default.createElement('img', {
-            className: 'image-gallery-image',
+          _react2.default.createElement("img", {
+            className: "image-gallery-image",
             alt: item.originalAlt,
             src: itemSrc
           })
-        ) : _react2.default.createElement('img', {
-          className: 'image-gallery-image',
+        ) : _react2.default.createElement("img", {
+          className: "image-gallery-image",
           src: itemSrc,
           alt: item.originalAlt,
           srcSet: item.srcSet,
@@ -1344,48 +1349,48 @@ var ImageGallery = function (_React$Component) {
           onError: handleImageError
         }),
         item.description && _react2.default.createElement(
-          'span',
-          { className: 'image-gallery-description' },
+          "span",
+          { className: "image-gallery-description" },
           item.description
         ),
         item.credit && _react2.default.createElement(
-          'span',
-          { className: 'image-gallery-credit' },
+          "span",
+          { className: "image-gallery-credit" },
           _react2.default.createElement(
-            'p',
+            "p",
             null,
-            'Photo: '
+            "Photo: "
           ),
           item.credit
         )
       );
     }
   }, {
-    key: 'renderThumbInner',
+    key: "renderThumbInner",
     value: function renderThumbInner(item) {
       var onThumbnailError = this.props.onThumbnailError;
 
       var handleThumbnailError = onThumbnailError || this.handleImageError;
 
       return _react2.default.createElement(
-        'div',
-        { className: 'image-gallery-thumbnail-inner' },
-        _react2.default.createElement('img', {
-          className: 'image-gallery-thumbnail-image',
+        "div",
+        { className: "image-gallery-thumbnail-inner" },
+        _react2.default.createElement("img", {
+          className: "image-gallery-thumbnail-image",
           src: item.thumbnail,
           alt: item.thumbnailAlt,
           title: item.thumbnailTitle,
           onError: handleThumbnailError
         }),
         item.thumbnailLabel && _react2.default.createElement(
-          'div',
-          { className: 'image-gallery-thumbnail-label' },
+          "div",
+          { className: "image-gallery-thumbnail-label" },
           item.thumbnailLabel
         )
       );
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       var _state15 = this.state,
           currentIndex = _state15.currentIndex,
@@ -1418,10 +1423,10 @@ var ImageGallery = function (_React$Component) {
           thumbnails = _getSlideItems.thumbnails,
           bullets = _getSlideItems.bullets;
 
-      var slideWrapperClass = (0, _clsx2.default)('image-gallery-slide-wrapper', thumbnailPosition, { 'image-gallery-rtl': isRTL });
+      var slideWrapperClass = (0, _clsx2.default)("image-gallery-slide-wrapper", thumbnailPosition, { "image-gallery-rtl": isRTL });
 
       var slideWrapper = _react2.default.createElement(
-        'div',
+        "div",
         { ref: this.imageGallerySlideWrapper, className: slideWrapperClass },
         renderCustomControls && renderCustomControls(),
         this.canSlide() ? _react2.default.createElement(
@@ -1436,97 +1441,97 @@ var ImageGallery = function (_React$Component) {
           _react2.default.createElement(
             _reactSwipeable.Swipeable,
             {
-              className: 'image-gallery-swipe',
+              className: "image-gallery-swipe",
               delta: 0,
               onSwiping: this.handleSwiping,
               onSwiped: this.handleOnSwiped
             },
             _react2.default.createElement(
-              'div',
-              { className: 'image-gallery-slides' },
+              "div",
+              { className: "image-gallery-slides" },
               slides
             )
           )
         ) : _react2.default.createElement(
-          'div',
-          { className: 'image-gallery-slides' },
+          "div",
+          { className: "image-gallery-slides" },
           slides
         ),
         showPlayButton && renderPlayPauseButton(this.togglePlay, isPlaying),
         showBullets && _react2.default.createElement(
-          'div',
-          { className: 'image-gallery-bullets' },
+          "div",
+          { className: "image-gallery-bullets" },
           _react2.default.createElement(
-            'div',
+            "div",
             {
-              className: 'image-gallery-bullets-container',
-              role: 'navigation',
-              'aria-label': 'Bullet Navigation'
+              className: "image-gallery-bullets-container",
+              role: "navigation",
+              "aria-label": "Bullet Navigation"
             },
             bullets
           )
         ),
         showFullscreenButton && renderFullscreenButton(this.toggleFullScreen, isFullscreen),
         showIndex && _react2.default.createElement(
-          'div',
-          { className: 'image-gallery-index' },
+          "div",
+          { className: "image-gallery-index" },
           _react2.default.createElement(
-            'span',
-            { className: 'image-gallery-index-current' },
+            "span",
+            { className: "image-gallery-index-current" },
             currentIndex + 1
           ),
           _react2.default.createElement(
-            'span',
-            { className: 'image-gallery-index-separator' },
+            "span",
+            { className: "image-gallery-index-separator" },
             indexSeparator
           ),
           _react2.default.createElement(
-            'span',
-            { className: 'image-gallery-index-total' },
+            "span",
+            { className: "image-gallery-index-total" },
             items.length
           )
         )
       );
 
-      var igClass = (0, _clsx2.default)('image-gallery', additionalClass, { 'fullscreen-modal': modalFullscreen });
-      var igContentClass = (0, _clsx2.default)('image-gallery-content', thumbnailPosition, { fullscreen: isFullscreen });
-      var thumbnailWrapperClass = (0, _clsx2.default)('image-gallery-thumbnails-wrapper', thumbnailPosition, { 'thumbnails-wrapper-rtl': !this.isThumbnailVertical() && isRTL });
+      var igClass = (0, _clsx2.default)("image-gallery", additionalClass, {
+        "fullscreen-modal": modalFullscreen
+      });
+      var igContentClass = (0, _clsx2.default)("image-gallery-content", thumbnailPosition, {
+        fullscreen: isFullscreen
+      });
+      var thumbnailWrapperClass = (0, _clsx2.default)("image-gallery-thumbnails-wrapper", thumbnailPosition, { "thumbnails-wrapper-rtl": !this.isThumbnailVertical() && isRTL });
       return _react2.default.createElement(
-        'div',
-        {
-          ref: this.imageGallery,
-          className: igClass,
-          'aria-live': 'polite'
-        },
+        "div",
+        { ref: this.imageGallery, className: igClass, "aria-live": "polite" },
         _react2.default.createElement(
-          'div',
+          "div",
           { className: igContentClass },
-          (thumbnailPosition === 'bottom' || thumbnailPosition === 'right') && slideWrapper,
+          (thumbnailPosition === "bottom" || thumbnailPosition === "right") && slideWrapper,
           showThumbnails && _react2.default.createElement(
-            'div',
+            "div",
             {
               className: thumbnailWrapperClass,
               style: this.getThumbnailBarHeight()
             },
             _react2.default.createElement(
-              'div',
+              "div",
               {
-                className: 'image-gallery-thumbnails',
+                className: "image-gallery-thumbnails",
                 ref: this.thumbnailsWrapper
               },
               _react2.default.createElement(
-                'div',
+                "div",
                 {
                   ref: this.thumbnails,
-                  className: 'image-gallery-thumbnails-container',
+                  className: "image-gallery-thumbnails-container",
                   style: thumbnailStyle,
-                  'aria-label': 'Thumbnail Navigation'
+                  "aria-label": "Thumbnail Navigation"
                 },
                 thumbnails
               )
             )
           ),
-          (thumbnailPosition === 'top' || thumbnailPosition === 'left') && slideWrapper
+          (thumbnailPosition === "top" || thumbnailPosition === "left") && slideWrapper
         )
       );
     }
@@ -1609,8 +1614,8 @@ ImageGallery.propTypes = {
   isRTL: _propTypes.bool
 };
 ImageGallery.defaultProps = {
-  onErrorImageURL: '',
-  additionalClass: '',
+  onErrorImageURL: "",
+  additionalClass: "",
   showNav: true,
   autoPlay: false,
   lazyLoad: false,
@@ -1629,8 +1634,8 @@ ImageGallery.defaultProps = {
   preventDefaultTouchmoveEvent: false,
   flickThreshold: 0.4,
   stopPropagation: false,
-  indexSeparator: ' / ',
-  thumbnailPosition: 'bottom',
+  indexSeparator: " / ",
+  thumbnailPosition: "bottom",
   startIndex: 0,
   slideDuration: 450,
   swipingTransitionDuration: 0,
@@ -1657,52 +1662,52 @@ ImageGallery.defaultProps = {
   swipeThreshold: 30,
   renderLeftNav: function renderLeftNav(onClick, disabled) {
     return _react2.default.createElement(
-      'button',
+      "button",
       {
-        type: 'button',
-        className: 'image-gallery-icon image-gallery-left-nav',
+        type: "button",
+        className: "image-gallery-icon image-gallery-left-nav",
         disabled: disabled,
         onClick: onClick,
-        'aria-label': 'Previous Slide'
+        "aria-label": "Previous Slide"
       },
-      _react2.default.createElement(_SVG2.default, { icon: 'left', viewBox: '6 0 12 24' })
+      _react2.default.createElement(_SVG2.default, { icon: "left", viewBox: "6 0 12 24" })
     );
   },
   renderRightNav: function renderRightNav(onClick, disabled) {
     return _react2.default.createElement(
-      'button',
+      "button",
       {
-        type: 'button',
-        className: 'image-gallery-icon image-gallery-right-nav',
+        type: "button",
+        className: "image-gallery-icon image-gallery-right-nav",
         disabled: disabled,
         onClick: onClick,
-        'aria-label': 'Next Slide'
+        "aria-label": "Next Slide"
       },
-      _react2.default.createElement(_SVG2.default, { icon: 'right', viewBox: '6 0 12 24' })
+      _react2.default.createElement(_SVG2.default, { icon: "right", viewBox: "6 0 12 24" })
     );
   },
   renderPlayPauseButton: function renderPlayPauseButton(onClick, isPlaying) {
     return _react2.default.createElement(
-      'button',
+      "button",
       {
-        type: 'button',
-        className: 'image-gallery-icon image-gallery-play-button',
+        type: "button",
+        className: "image-gallery-icon image-gallery-play-button",
         onClick: onClick,
-        'aria-label': 'Play or Pause Slideshow'
+        "aria-label": "Play or Pause Slideshow"
       },
-      _react2.default.createElement(_SVG2.default, { strokeWidth: 2, icon: isPlaying ? 'pause' : 'play' })
+      _react2.default.createElement(_SVG2.default, { strokeWidth: 2, icon: isPlaying ? "pause" : "play" })
     );
   },
   renderFullscreenButton: function renderFullscreenButton(onClick, isFullscreen) {
     return _react2.default.createElement(
-      'button',
+      "button",
       {
-        type: 'button',
-        className: 'image-gallery-icon image-gallery-fullscreen-button',
+        type: "button",
+        className: "image-gallery-icon image-gallery-fullscreen-button",
         onClick: onClick,
-        'aria-label': 'Open Fullscreen'
+        "aria-label": "Open Fullscreen"
       },
-      _react2.default.createElement(_SVG2.default, { strokeWidth: 2, icon: isFullscreen ? 'minimize' : 'maximize' })
+      _react2.default.createElement(_SVG2.default, { strokeWidth: 2, icon: isFullscreen ? "minimize" : "maximize" })
     );
   }
 };
