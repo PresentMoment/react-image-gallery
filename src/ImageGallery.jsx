@@ -59,6 +59,7 @@ export default class ImageGallery extends React.Component {
     autoPlay: bool,
     lazyLoad: bool,
     infinite: bool,
+    isLoaded: bool,
     showIndex: bool,
     showBullets: bool,
     showThumbnails: bool,
@@ -113,6 +114,7 @@ export default class ImageGallery extends React.Component {
     autoPlay: false,
     lazyLoad: false,
     infinite: true,
+    isLoaded: true,
     showIndex: false,
     showBullets: false,
     showThumbnails: true,
@@ -208,6 +210,7 @@ export default class ImageGallery extends React.Component {
       thumbnailsWrapperHeight: 0,
       isFullscreen: false,
       isPlaying: false,
+      isLoaded: false,
     };
     this.loadedImages = {};
     this.imageGallery = React.createRef();
@@ -257,6 +260,7 @@ export default class ImageGallery extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     const {
+      isLoaded,
       items,
       lazyLoad,
       slideDuration,
@@ -265,12 +269,17 @@ export default class ImageGallery extends React.Component {
       showThumbnails,
     } = this.props;
     const { currentIndex } = this.state;
+    const loaded = prevProps.isLoaded !== this.state.isLoaded;
     const itemsSizeChanged = prevProps.items.length !== items.length;
     const itemsChanged = !isEqual(prevProps.items, items);
     const startIndexUpdated = prevProps.startIndex !== startIndex;
     const thumbnailsPositionChanged =
       prevProps.thumbnailPosition !== thumbnailPosition;
     const showThumbnailsChanged = prevProps.showThumbnails !== showThumbnails;
+
+    if (loaded) {
+      this.setState({ isLoaded: isLoaded });
+    }
 
     if (thumbnailsPositionChanged) {
       // re-initialize resizeObserver because slides was unmounted and mounted again
@@ -1355,7 +1364,11 @@ export default class ImageGallery extends React.Component {
             onError={handleImageError}
           />
         )}
-
+        {!this.state.isLoaded && (
+          <span className="image-gallery-credit">
+            <p>...loading...</p>
+          </span>
+        )}
         {item.description && (
           <span className="image-gallery-description">{item.description}</span>
         )}
