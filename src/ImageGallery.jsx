@@ -1366,7 +1366,7 @@ export default class ImageGallery extends React.Component {
         )}
         {!this.state.isLoaded && (
           <span className="loading">
-            <p>...loading...</p>
+            <p>loading...</p>
           </span>
         )}
         {item.description && (

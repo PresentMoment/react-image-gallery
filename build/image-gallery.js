@@ -718,10 +718,13 @@ var ImageGallery = (function (_React$Component) {
           }
 
           if (showThumbnails) {
-            var igThumbnailClass = (0,
-            _clsx2.default)("image-gallery-thumbnail", thumbnailClass, {
-              active: currentIndex === index,
-            });
+            var igThumbnailClass = (0, _clsx2.default)(
+              "image-gallery-thumbnail",
+              thumbnailClass,
+              {
+                active: currentIndex === index,
+              }
+            );
             thumbnails.push(
               _react2.default.createElement(
                 "button",
@@ -1625,7 +1628,7 @@ var ImageGallery = (function (_React$Component) {
             _react2.default.createElement(
               "span",
               { className: "loading" },
-              _react2.default.createElement("p", null, "...loading...")
+              _react2.default.createElement("p", null, "loading...")
             ),
           item.description &&
             _react2.default.createElement(
@@ -1702,10 +1705,13 @@ var ImageGallery = (function (_React$Component) {
           thumbnails = _getSlideItems.thumbnails,
           bullets = _getSlideItems.bullets;
 
-        var slideWrapperClass = (0,
-        _clsx2.default)("image-gallery-slide-wrapper", thumbnailPosition, {
-          "image-gallery-rtl": isRTL,
-        });
+        var slideWrapperClass = (0, _clsx2.default)(
+          "image-gallery-slide-wrapper",
+          thumbnailPosition,
+          {
+            "image-gallery-rtl": isRTL,
+          }
+        );
 
         var slideWrapper = _react2.default.createElement(
           "div",
@@ -1791,10 +1797,13 @@ var ImageGallery = (function (_React$Component) {
             fullscreen: isFullscreen,
           }
         );
-        var thumbnailWrapperClass = (0,
-        _clsx2.default)("image-gallery-thumbnails-wrapper", thumbnailPosition, {
-          "thumbnails-wrapper-rtl": !this.isThumbnailVertical() && isRTL,
-        });
+        var thumbnailWrapperClass = (0, _clsx2.default)(
+          "image-gallery-thumbnails-wrapper",
+          thumbnailPosition,
+          {
+            "thumbnails-wrapper-rtl": !this.isThumbnailVertical() && isRTL,
+          }
+        );
         return _react2.default.createElement(
           "div",
           { ref: this.imageGallery, className: igClass, "aria-live": "polite" },
