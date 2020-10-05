@@ -210,7 +210,7 @@ export default class ImageGallery extends React.Component {
       thumbnailsWrapperHeight: 0,
       isFullscreen: false,
       isPlaying: false,
-      isLoaded: false,
+      isLoaded: true,
     };
     this.loadedImages = {};
     this.imageGallery = React.createRef();
@@ -276,7 +276,6 @@ export default class ImageGallery extends React.Component {
     const thumbnailsPositionChanged =
       prevProps.thumbnailPosition !== thumbnailPosition;
     const showThumbnailsChanged = prevProps.showThumbnails !== showThumbnails;
-
     if (loaded) {
       this.setState({ isLoaded: isLoaded });
     }
@@ -1317,10 +1316,11 @@ export default class ImageGallery extends React.Component {
   handleImageLoaded(event, item) {
     const { onImageLoad } = this.props;
     const imageExists = this.loadedImages[item.original];
-    if (!imageExists && onImageLoad) {
+    if (onImageLoad) {
       this.loadedImages[item.original] = true; // prevent from call again
       // image just loaded, call onImageLoad
       onImageLoad(event);
+      this.setState({ isLoaded: true });
     }
   }
 
@@ -1365,7 +1365,7 @@ export default class ImageGallery extends React.Component {
           />
         )}
         {!this.state.isLoaded && (
-          <span className="image-gallery-credit">
+          <span className="loading">
             <p>...loading...</p>
           </span>
         )}

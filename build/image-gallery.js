@@ -153,7 +153,7 @@ var ImageGallery = (function (_React$Component) {
       thumbnailsWrapperHeight: 0,
       isFullscreen: false,
       isPlaying: false,
-      isLoaded: false,
+      isLoaded: true,
     };
     _this.loadedImages = {};
     _this.imageGallery = _react2.default.createRef();
@@ -226,7 +226,6 @@ var ImageGallery = (function (_React$Component) {
         var thumbnailsPositionChanged =
           prevProps.thumbnailPosition !== thumbnailPosition;
         var showThumbnailsChanged = prevProps.showThumbnails !== showThumbnails;
-
         if (loaded) {
           this.setState({ isLoaded: isLoaded });
         }
@@ -1564,10 +1563,11 @@ var ImageGallery = (function (_React$Component) {
         var onImageLoad = this.props.onImageLoad;
 
         var imageExists = this.loadedImages[item.original];
-        if (!imageExists && onImageLoad) {
+        if (onImageLoad) {
           this.loadedImages[item.original] = true; // prevent from call again
           // image just loaded, call onImageLoad
           onImageLoad(event);
+          this.setState({ isLoaded: true });
         }
       },
     },
@@ -1624,7 +1624,7 @@ var ImageGallery = (function (_React$Component) {
           !this.state.isLoaded &&
             _react2.default.createElement(
               "span",
-              { className: "image-gallery-credit" },
+              { className: "loading" },
               _react2.default.createElement("p", null, "...loading...")
             ),
           item.description &&
