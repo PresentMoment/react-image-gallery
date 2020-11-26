@@ -1640,8 +1640,7 @@ var ImageGallery = (function (_React$Component) {
             _react2.default.createElement(
               "span",
               { className: "image-gallery-credit" },
-              _react2.default.createElement("p", null, "Photo: "),
-              item.credit
+              _react2.default.createElement("p", null, "Photo: ", item.credit)
             )
         );
       },

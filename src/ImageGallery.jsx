@@ -1374,8 +1374,10 @@ export default class ImageGallery extends React.Component {
         )}
         {item.credit && (
           <span className="image-gallery-credit">
-            <p>Photo: </p>
+            <p>Photo: 
+
             {item.credit}
+            </p>
           </span>
         )}
       </div>
